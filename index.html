@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result Verification — Marwar Medical University, Jodhpur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset & Base ─────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ── Light Theme ──────────────────────────────────── */
+        [data-theme="light"] {
+            --bg: #f4f7fc;
+            --surface: #ffffff;
+            --surface-alt: #f8faff;
+            --card: #ffffff;
+            --card-border: #e9eef4;
+            --card-shadow: 0 1px 3px rgba(0, 20, 40, 0.04), 0 8px 32px rgba(0, 20, 40, 0.06);
+
+            --primary: #0f3b5e;
+            --primary-light: #e8f0fe;
+            --primary-dark: #0a2a44;
+            --accent: #d45a2a;
+            --accent-light: #fef0e8;
+            --accent-dark: #b0441e;
+            --success: #0f8a5e;
+            --success-light: #e6f7ef;
+            --danger: #d43a3a;
+            --danger-light: #fdeeec;
+            --warning: #d98c1a;
+            --gold: #e8b830;
+
+            --text: #0b1a2a;
+            --text-secondary: #3d576c;
+            --text-muted: #7a8fa3;
+            --text-inverse: #ffffff;
+
+            --border: #e4e9f0;
+            --border-light: #f0f3f8;
+            --divider: #eef2f7;
+
+            --hover: #f5f9ff;
+            --disabled: #eef2f7;
+
+            --badge-pass-bg: #e6f7ef;
+            --badge-pass-text: #0f8a5e;
+            --badge-pass-border: #b8e6d4;
+            --badge-fail-bg: #fdeeec;
+            --badge-fail-text: #d43a3a;
+            --badge-fail-border: #f5c8c4;
+
+            --table-stripe: #fafcff;
+            --table-border: #eef2f7;
+
+            --input-bg: #ffffff;
+            --input-border: #dce2ea;
+            --input-focus: #0f3b5e;
+
+            --header-bg: #ffffff;
+            --header-border: #e9eef4;
+            --header-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 20, 40, 0.04);
+
+            --footer-bg: #f8faff;
+            --footer-border: #e9eef4;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 12px rgba(0, 20, 40, 0.06);
+            --shadow-lg: 0 8px 32px rgba(0, 20, 40, 0.08);
+
+            --toggle-bg: #dce2ea;
+            --toggle-dot: #ffffff;
+        }
+
+        /* ── Dark Theme ───────────────────────────────────── */
+        [data-theme="dark"] {
+            --bg: #0a121e;
+            --surface: #111d2d;
+            --surface-alt: #0f1a28;
+            --card: #152233;
+            --card-border: #1e3044;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
+
+            --primary: #6d9fc8;
+            --primary-light: #1a2f44;
+            --primary-dark: #8bb8df;
+            --accent: #e87a4a;
+            --accent-light: #2d1a10;
+            --accent-dark: #f0946a;
+            --success: #3ebd8a;
+            --success-light: #0f2a1e;
+            --danger: #e86060;
+            --danger-light: #2d1412;
+            --warning: #e8b830;
+            --gold: #e8b830;
+
+            --text: #e8edf2;
+            --text-secondary: #a0b8cc;
+            --text-muted: #6a8498;
+            --text-inverse: #0b1a2a;
+
+            --border: #1e3044;
+            --border-light: #17283a;
+            --divider: #1a2a3e;
+
+            --hover: #1a2a3e;
+            --disabled: #1a2a3e;
+
+            --badge-pass-bg: #0f2a1e;
+            --badge-pass-text: #3ebd8a;
+            --badge-pass-border: #1a4a34;
+            --badge-fail-bg: #2d1412;
+            --badge-fail-text: #e86060;
+            --badge-fail-border: #4a2220;
+
+            --table-stripe: #0f1a28;
+            --table-border: #1e3044;
+
+            --input-bg: #0f1a28;
+            --input-border: #1e3044;
+            --input-focus: #6d9fc8;
+
+            --header-bg: #111d2d;
+            --header-border: #1e3044;
+            --header-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.4);
+
+            --footer-bg: #0f1a28;
+            --footer-border: #1e3044;
+
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+            --toggle-bg: #1e3044;
+            --toggle-dot: #a0b8cc;
+        }
+
+        /* ── Reset ────────────────────────────────────────── */
+        html {
+            font-family: var(--font);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background var(--transition), color var(--transition);
+            line-height: 1.6;
+        }
+
+        /* ── Scrollbar ────────────────────────────────────── */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* ── Header ───────────────────────────────────────── */
+        .header {
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--header-border);
+            box-shadow: var(--header-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .header-inner {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .header-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            flex-shrink: 0;
+            transition: background var(--transition);
+        }
+
+        .header-title {
+            min-width: 0;
+        }
+
+        .header-title h1 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: var(--text);
+            line-height: 1.2;
+            transition: color var(--transition);
+        }
+
+        .header-title .sub {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.2px;
+            margin-top: 1px;
+            transition: color var(--transition);
+        }
+
+        .header-title .sub span {
+            color: var(--text-secondary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .header-badge {
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+        }
+
+        /* ── Theme Toggle ──────────────────────────────────── */
+        .toggle-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-wrap .icon {
+            font-size: 13px;
+            line-height: 1;
+            opacity: 0.6;
+            transition: opacity var(--transition);
+        }
+
+        .toggle-wrap .icon.active {
+            opacity: 1;
+        }
+
+        .toggle {
+            position: relative;
+            width: 40px;
+            height: 22px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .toggle .slider {
+            position: absolute;
+            inset: 0;
+            background: var(--toggle-bg);
+            border-radius: 22px;
+            transition: background var(--transition);
+        }
+
+        .toggle .slider::before {
+            content: '';
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            top: 3px;
+            background: var(--toggle-dot);
+            border-radius: 50%;
+            transition: transform var(--transition), background var(--transition);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle input:checked+.slider {
+            background: var(--primary);
+        }
+
+        .toggle input:checked+.slider::before {
+            transform: translateX(18px);
+            background: #ffffff;
+        }
+
+        /* ── Breadcrumb ────────────────────────────────────── */
+        .breadcrumb {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 10px 24px 0;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            transition: color var(--transition);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb .sep {
+            opacity: 0.4;
+            font-weight: 300;
+        }
+
+        .breadcrumb .current {
+            color: var(--text);
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+
+        /* ── Main ──────────────────────────────────────────── */
+        main {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+        }
+
+        /* ── States ────────────────────────────────────────── */
+        #s-loading,
+        #s-lock,
+        #s-deny,
+        #s-result {
+            display: none;
+        }
+
+        /* ── Card ──────────────────────────────────────────── */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+
+        /* ── Loading ───────────────────────────────────────── */
+        .loading-state {
+            padding: 64px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            text-align: center;
+        }
+
+        .loading-state .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-state p {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .loading-state .sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ── Lock / Deny ───────────────────────────────────── */
+        .info-screen {
+            padding: 56px 32px;
+            text-align: center;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .info-screen .big-icon {
+            font-size: 56px;
+            margin-bottom: 12px;
+            display: block;
+            line-height: 1;
+        }
+
+        .info-screen h2 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            transition: color var(--transition);
+        }
+
+        .info-screen p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            transition: color var(--transition);
+        }
+
+        .info-screen .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .deny-tag {
+            display: inline-block;
+            margin-top: 18px;
+            background: var(--danger-light);
+            border: 1px solid var(--badge-fail-border);
+            border-radius: var(--radius-sm);
+            padding: 8px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--danger);
+            letter-spacing: 0.2px;
+            font-family: var(--font);
+            transition: background var(--transition), border-color var(--transition), color var(--transition);
+        }
+
+        /* ── Result Header ─────────────────────────────────── */
+        .result-header {
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid var(--divider);
+            transition: border-color var(--transition);
+        }
+
+        .result-header.pass {
+            border-bottom-color: var(--success);
+            background: var(--success-light);
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .result-header.fail {
+            border-bottom-color: var(--danger);
+            background: var(--danger-light);
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .result-header .info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .result-header .info .name {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+
+        .result-header .info .meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            transition: color var(--transition);
+        }
+
+        .result-header .info .meta b {
+            color: var(--text);
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+
+        .result-header .badge-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .result-header .badge {
+            font-size: 12px;
+            font-weight: 800;
+            padding: 5px 18px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+        }
+
+        .result-header .badge.pass {
+            background: var(--badge-pass-bg);
+            color: var(--badge-pass-text);
+            border-color: var(--badge-pass-border);
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+        }
+
+        .result-header .badge.fail {
+            background: var(--badge-fail-bg);
+            color: var(--badge-fail-text);
+            border-color: var(--badge-fail-border);
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+        }
+
+        .result-header .stamp {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .result-header .stamp .icon {
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .result-header .stamp .label {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--success);
+            margin-top: 1px;
+            transition: color var(--transition);
+        }
+
+        /* ── Section ───────────────────────────────────────── */
+        .section {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--divider);
+            transition: border-color var(--transition);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            transition: color var(--transition);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
+            transition: background var(--transition);
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--divider);
+            transition: background var(--transition);
+        }
+
+        /* ── Info Grid ─────────────────────────────────────── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px 20px;
+        }
+
+        .info-item label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 2px;
+            transition: color var(--transition);
+        }
+
+        .info-item span {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+
+        /* ── Marks Table ───────────────────────────────────── */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--table-border);
+            transition: border-color var(--transition);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            min-width: 620px;
+        }
+
+        thead {
+            background: var(--table-stripe);
+            transition: background var(--transition);
+        }
+
+        th {
+            padding: 10px 12px;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            border-bottom: 1px solid var(--table-border);
+            text-align: center;
+            white-space: nowrap;
+            transition: color var(--transition), border-color var(--transition), background var(--transition);
+        }
+
+        th:first-child {
+            text-align: left;
+            padding-left: 16px;
+        }
+
+        td {
+            padding: 12px 12px;
+            border-bottom: 1px solid var(--table-border);
+            text-align: center;
+            vertical-align: middle;
+            color: var(--text-secondary);
+            transition: color var(--transition), border-color var(--transition);
+        }
+
+        td:first-child {
+            text-align: left;
+            padding-left: 16px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--hover);
+            transition: background var(--transition);
+        }
+
+        .paper-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+
+        .paper-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 1px;
+            transition: color var(--transition);
+        }
+
+        .marks-num {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text);
+            transition: color var(--transition);
+        }
+
+        .marks-sub {
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-top: 1px;
+            transition: color var(--transition);
+        }
+
+        .marks-total {
+            color: var(--primary) !important;
+            transition: color var(--transition);
+        }
+
+        .grade-chip {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            background: var(--primary-light);
+            color: var(--primary);
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .status-pass {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 12px;
+            transition: color var(--transition);
+        }
+
+        .status-fail {
+            color: var(--danger);
+            font-weight: 700;
+            font-size: 12px;
+            transition: color var(--transition);
+        }
+
+        .dash {
+            color: var(--text-muted);
+            font-weight: 400;
+            transition: color var(--transition);
+        }
+
+        /* ── Summary ───────────────────────────────────────── */
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            padding: 20px 28px;
+            background: var(--surface-alt);
+            border-top: 1px solid var(--divider);
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .summary-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 14px;
+            text-align: center;
+            transition: background var(--transition), border-color var(--transition);
+        }
+
+        .summary-item .value {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            transition: color var(--transition);
+        }
+
+        .summary-item .label {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-top: 4px;
+            transition: color var(--transition);
+        }
+
+        .summary-item .value.result-pass {
+            color: var(--success);
+        }
+        .summary-item .value.result-fail {
+            color: var(--danger);
+        }
+
+        /* ── Footer Strip ──────────────────────────────────── */
+        .result-footer {
+            background: var(--surface-alt);
+            border-top: 1px solid var(--divider);
+            padding: 14px 28px;
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            transition: background var(--transition), border-color var(--transition), color var(--transition);
+        }
+
+        .result-footer .lock {
+            color: var(--primary);
+            font-size: 14px;
+            transition: color var(--transition);
+        }
+
+        .result-footer strong {
+            color: var(--text-secondary);
+            font-weight: 600;
+            transition: color var(--transition);
+        }
+
+        /* ── Page Footer ───────────────────────────────────── */
+        .page-footer {
+            text-align: center;
+            padding: 32px 20px 40px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--divider);
+            margin-top: 8px;
+            line-height: 2;
+            transition: color var(--transition), border-color var(--transition);
+        }
+
+        .page-footer .brand {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.3px;
+            transition: color var(--transition);
+        }
+
+        .page-footer .brand strong {
+            color: var(--primary);
+            transition: color var(--transition);
+        }
+
+        .page-footer .details {
+            font-size: 12px;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .page-footer .warning {
+            margin-top: 14px;
+            font-size: 12px;
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 20px;
+            display: inline-block;
+            color: var(--text-muted);
+            transition: background var(--transition), border-color var(--transition), color var(--transition);
+        }
+
+        /* ── Responsive ────────────────────────────────────── */
+        @media (max-width: 720px) {
+            .header-inner {
+                padding: 12px 16px;
+            }
+
+            .header-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+
+            .header-title h1 {
+                font-size: 15px;
+            }
+
+            .header-title .sub {
+                font-size: 11px;
+            }
+
+            .header-badge {
+                display: none;
+            }
+
+            .breadcrumb {
+                padding: 8px 16px 0;
+                font-size: 11px;
+            }
+
+            main {
+                padding: 16px 12px 32px;
+            }
+
+            .result-header {
+                padding: 18px 16px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .result-header .info .name {
+                font-size: 17px;
+            }
+
+            .result-header .badge-wrap {
+                align-self: flex-start;
+            }
+
+            .section {
+                padding: 16px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 16px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr 1fr;
+                padding: 16px;
+                gap: 8px;
+            }
+
+            .summary-item .value {
+                font-size: 20px;
+            }
+
+            .result-footer {
+                padding: 12px 16px;
+                font-size: 11px;
+            }
+
+            .info-screen {
+                padding: 40px 20px;
+            }
+
+            .info-screen h2 {
+                font-size: 19px;
+            }
+
+            .loading-state {
+                padding: 48px 20px;
+            }
+
+            .page-footer {
+                padding: 24px 16px 32px;
+                font-size: 12px;
+            }
+
+            .page-footer .brand {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .result-header .stamp .icon {
+                font-size: 22px;
+            }
+        }
+
+        /* ── Utility ───────────────────────────────────────── */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════ HEADER ═══════ -->
+    <header class="header" role="banner">
+        <div class="header-inner">
+            <div class="header-left">
+  <div class="logo"><img src="src/favicon.ico"></img></div>
+                <div class="header-title">
+                    <h1>Marwar Medical University, Jodhpur</h1>
+                    <div class="sub"> Result Verification Portal</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="header-badge">🔒 Official</span>
+                <div class="toggle-wrap">
+                    <span class="icon" id="sunIcon" aria-hidden="true">☀️</span>
+                    <label class="toggle" title="Toggle theme">
+                        <input type="checkbox" id="themeToggle" onchange="toggleTheme(this)" />
+                        <span class="slider"></span>
+                    </label>
+                    <span class="icon" id="moonIcon" aria-hidden="true">🌙</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="breadcrumb" aria-label="Breadcrumb">
+            <span class="current">B.Sc. Nursing 1st Semester 2025–26</span>
+        </div>
+    </header>
+
+    <!-- ═══════ MAIN ═══════ -->
+    <main>
+
+        <!-- Loading -->
+        <div id="s-loading">
+            <div class="card">
+                <div class="loading-state">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <p>Verifying marksheet…</p>
+                    <div class="sub">Please wait while we validate the record</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lock -->
+        <div id="s-lock">
+            <div class="card">
+                <div class="info-screen">
+                    <span class="big-icon" aria-hidden="true">🔐</span>
+                    <h2>Scan Your QR Code to Verify</h2>
+                    <p>
+                        This portal is accessible <span class="highlight">only by scanning the QR code</span>
+                        printed on your official marksheet issued by
+                        <span class="highlight">Marwar Medical University, Jodhpur</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deny -->
+        <div id="s-deny">
+            <div class="card">
+                <div class="info-screen">
+                    <span class="big-icon" aria-hidden="true">🚫</span>
+                    <h2>Access Denied</h2>
+                    <p>
+                        This verification link is <span class="highlight">invalid or has been tampered with</span>.
+                    </p>
+                    <div class="deny-tag" id="deny-urn"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="s-result">
+            <div class="card">
+
+                <!-- Header -->
+                <div class="result-header" id="rheader">
+                    <div class="info">
+                        <div class="name" id="r-name"></div>
+                        <div class="meta" id="r-meta"></div>
+                    </div>
+                    <div class="badge-wrap">
+                        <span class="badge" id="r-badge"></span>
+                        <div class="stamp">
+                            <div class="icon" aria-hidden="true">✅</div>
+                            <div class="label">Verified</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Info -->
+                <div class="section">
+                    <div class="section-title">Student Information</div>
+                    <div class="info-grid">
+                        <div class="info-item"><label>Father's Name</label><span id="r-father"></span></div>
+                        <div class="info-item"><label>Mother's Name</label><span id="r-mother"></span></div>
+                        <div class="info-item"><label>College</label><span id="r-college"></span></div>
+                        <div class="info-item"><label>College Code</label><span id="r-ccode"></span></div>
+                        <div class="info-item"><label>Code</label><span id="r-Code"></span></div>
+                        <div class="info-item"><label>Examination</label><span>B.Sc. Nursing — 1st Semester 2025–26</span></div>
+                        <div class="info-item"><label>University</label><span>Marwar Medical University, Jodhpur</span></div>
+                        <div class="info-item"><label>Established</label><span>2023</span></div>
+                    </div>
+                </div>
+
+                <!-- Marks -->
+                <div class="section">
+                    <div class="section-title">Subject-wise Marks</div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="text-align:left;min-width:180px">Paper / Subject</th>
+                                    <th>SA<br /><small style="font-weight:400;text-transform:none;">/37</small></th>
+                                    <th>SB<br /><small style="font-weight:400;text-transform:none;">/38</small></th>
+                                    <th>Theory</th>
+                                    <th>IA / PI</th>
+                                    <th>Total</th>
+                                    <th>Grade</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="summary">
+                    <div class="summary-item"><div class="value" id="s-tot"></div><div class="label">Grand Total</div></div>
+                    <div class="summary-item"><div class="value" id="s-pct"></div><div class="label">Percentage</div></div>
+                    <div class="summary-item"><div class="value" id="s-grd"></div><div class="label">Grade</div></div>
+                    <div class="summary-item"><div class="value" id="s-res"></div><div class="label">Result</div></div>
+                </div>
+
+                <!-- Footer strip -->
+                <div class="result-footer">
+                    <span class="lock" aria-hidden="true">🔒</span>
+                    Verified Official Record &nbsp;·&nbsp;
+                    <strong>Marwar Medical University, Jodhpur</strong> &nbsp;·&nbsp;
+                    Verified on <span id="r-ts"></span>
+                </div>
+
+            </div><!-- /card -->
+        </div><!-- /s-result -->
+
+    </main>
+
+    <!-- ═══════ PAGE FOOTER ═══════ -->
+    <footer class="page-footer">
+        <div class="brand"><strong>Controller of Examinations (CoE) - Dr. JAIRAM RAVTANI</strong></div>
+        <div class="details">Marwar Medical University, Jodhpur&nbsp;·&nbsp; B.Sc. Nursing 1st Semester 2025–26<br />
+            14 Affiliated Colleges &nbsp;·&nbsp; 755 Students &nbsp;·&nbsp; Jodhpur Division
+        </div>
+        <div class="warning">
+            ⚠️ This portal is for official result verification only.<br />
+            Misrepresentation or tampering of results is a punishable offence under university regulations.
+        </div>
+    </footer>
+
+    <script>
+        /* ── Theme ─────────────────────────────────────────── */
+        function toggleTheme(cb) {
+            const t = cb.checked ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            localStorage.setItem('mmu-theme', t);
+            updateThemeIcons(t);
+        }
+
+        function updateThemeIcons(theme) {
+            const sun = document.getElementById('sunIcon');
+            const moon = document.getElementById('moonIcon');
+            if (theme === 'dark') {
+                sun.classList.remove('active');
+                moon.classList.add('active');
+            } else {
+                sun.classList.add('active');
+                moon.classList.remove('active');
+            }
+        }
+
+        (function() {
+            let s = localStorage.getItem('mmu-theme');
+            if (!s && window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) s = 'dark';
+            if (s === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('themeToggle').checked = true;
+                updateThemeIcons('dark');
+            } else {
+                updateThemeIcons('light');
+            }
+        })();
+
+        /* ── Papers ────────────────────────────────────────── */
+        var PAPERS = [
+            { key: 'p1', label: 'Paper I', name: '61101 - Applied Anatomy & Applied Physiology', max: 100, hasSA: true, saMax: [37, 38] },
+            { key: 'p2', label: 'Paper II', name: '61102 - Applied Sociology & Applied Psychology', max: 100, hasSA: true, saMax: [37, 38] },
+            { key: 'p3', label: 'Paper III', name: '61103 - Communicative English**', max: 50, hasSA: true, saMax: [25, 25] },
+            { key: 'p4', label: 'Paper IV', name: '61104 - Nursing Foundation - I', max: 25, hasSA: false },
+        ];
+
+        /* ── States ────────────────────────────────────────── */
+        function show(id) {
+            ['s-loading', 's-lock', 's-deny', 's-result'].forEach(function(s) {
+                document.getElementById(s).style.display = (s === id) ? 'block' : 'none';
+            });
+        }
+
+        /* ── Boot ──────────────────────────────────────────── */
+        var params = new URLSearchParams(window.location.search);
+        var URN = (params.get('urn') || '').trim();
+        var TOKEN = (params.get('t') || '').trim();
+
+        if (!URN || !TOKEN) {
+            show('s-lock');
+        } else {
+            show('s-loading');
+            fetch('students.json')
+                .then(function(r) { return r.json(); })
+                .then(function(db) {
+                    var s = db[URN];
+                    if (!s) {
+                        document.getElementById('deny-urn').textContent = 'URN: ' + URN + ' — record not found';
+                        show('s-deny');
+                        return;
+                    }
+                    if (s.token !== TOKEN) {
+                        document.getElementById('deny-urn').textContent = 'URN: ' + URN + ' — invalid token';
+                        show('s-deny');
+                        return;
+                    }
+                    render(s);
+                })
+                .catch(function() {
+                    document.getElementById('deny-urn').textContent = 'Unable to load verification data. Please try again.';
+                    show('s-deny');
+                });
+        }
+
+        /* ── Render ────────────────────────────────────────── */
+        function nd(v) { return (v && v.trim() !== '') ? v : '—'; }
+
+        function render(s) {
+            var pass = s.result === 'PASS';
+
+            var rh = document.getElementById('rheader');
+            rh.className = 'result-header ' + (pass ? 'pass' : 'fail');
+            document.getElementById('r-name').textContent = nd(s.name);
+            document.getElementById('r-meta').innerHTML =
+                'URN: <b>' + s.urn + '</b> &nbsp;|&nbsp; Code: <b>' + s.Code +
+                '</b> &nbsp;|&nbsp; ' + nd(s.college);
+
+            var b = document.getElementById('r-badge');
+            b.textContent = s.result;
+            b.className = 'badge ' + (pass ? 'pass' : 'fail');
+
+            document.getElementById('r-father').textContent = nd(s.father);
+            document.getElementById('r-mother').textContent = nd(s.mother);
+            document.getElementById('r-college').textContent = nd(s.college);
+            document.getElementById('r-ccode').textContent = nd(s.college_code);
+            document.getElementById('r-Code').textContent = nd(s.Code);
+
+            /* Marks rows */
+            var tb = document.getElementById('mbody');
+            tb.innerHTML = '';
+            PAPERS.forEach(function(p) {
+                var d = s[p.key] || {};
+                var pst = d.status === 'PASS';
+                var tr = document.createElement('tr');
+                var saC, iaC;
+
+                if (p.hasSA) {
+                    var m = p.saMax || [37, 38];
+                    saC = '<td><div class="marks-num">' + nd(d.sa) + '</div><div class="marks-sub">/' + m[0] +
+                        '</div></td>' +
+                        '<td><div class="marks-num">' + nd(d.sb) + '</div><div class="marks-sub">/' + m[1] +
+                        '</div></td>';
+                    iaC = '<td><div class="marks-num">' + nd(d.ia) + '</div><div class="marks-sub">IA /25</div></td>';
+                } else {
+                    saC = '<td class="dash">—</td><td class="dash">—</td>';
+                    iaC = '<td><div class="marks-num">' + nd(d.ia) + ' / ' + nd(d.pi) + '</div>' +
+                        '<div class="marks-sub">IA + PI /25</div></td>';
+                }
+
+                var thMax = p.key === 'p3' ? '/25' : (p.key === 'p4' ? '' : '/75');
+                var thCell = p.key !== 'p4' ?
+                    '<td><div class="marks-num">' + nd(d.theory) + '</div><div class="marks-sub">' + thMax +
+                    '</div></td>' :
+                    '<td class="dash">—</td>';
+
+                tr.innerHTML =
+                    '<td><div class="paper-name">' + p.label + ' — ' + p.name + '</div>' +
+                    '<div class="paper-sub">Max Marks: ' + p.max +
+                    ' &nbsp;|&nbsp; Grade Point: ' + nd(d.gp) +
+                    ' &nbsp;|&nbsp; Percentage: ' + nd(d.pct) + '%</div></td>' +
+                    saC + thCell + iaC +
+                    '<td><div class="marks-num marks-total">' + nd(d.total) + '</div><div class="marks-sub">/' + p
+                    .max + '</div></td>' +
+                    '<td><span class="grade-chip">' + nd(d.grade) + '</span></td>' +
+                    '<td><span class="' + (pst ? 'status-pass' : 'status-fail') + '">' + (pst ? '✓ PASS' : '✗ FAIL') +
+                    '</span></td>';
+                tb.appendChild(tr);
+            });
+
+            /* Summary */
+            document.getElementById('s-tot').textContent = nd(s.grand_total);
+            document.getElementById('s-pct').textContent = nd(s.percent) + '%';
+            document.getElementById('s-grd').textContent = nd(s.grade);
+            var sr = document.getElementById('s-res');
+            sr.textContent = nd(s.result);
+            sr.className = 'value ' + (pass ? 'result-pass' : 'result-fail');
+
+            document.getElementById('r-ts').textContent =
+                new Date().toLocaleString('en-IN', { dateStyle: 'long', timeStyle: 'short' });
+
+            show('s-result');
+        }
+    </script>
+</body>
+</html>
