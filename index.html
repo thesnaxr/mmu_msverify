@@ -1,1337 +1,710 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Result Verification — Marwar Medical University, Jodhpur</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
-    <style>
-        /* ── Reset & Base ─────────────────────────────────── */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --radius-xs: 6px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* ── Light Theme ──────────────────────────────────── */
-        [data-theme="light"] {
-            --bg: #f4f7fc;
-            --surface: #ffffff;
-            --surface-alt: #f8faff;
-            --card: #ffffff;
-            --card-border: #e9eef4;
-            --card-shadow: 0 1px 3px rgba(0, 20, 40, 0.04), 0 8px 32px rgba(0, 20, 40, 0.06);
-
-            --primary: #0f3b5e;
-            --primary-light: #e8f0fe;
-            --primary-dark: #0a2a44;
-            --accent: #d45a2a;
-            --accent-light: #fef0e8;
-            --accent-dark: #b0441e;
-            --success: #0f8a5e;
-            --success-light: #e6f7ef;
-            --danger: #d43a3a;
-            --danger-light: #fdeeec;
-            --warning: #d98c1a;
-            --gold: #e8b830;
-
-            --text: #0b1a2a;
-            --text-secondary: #3d576c;
-            --text-muted: #7a8fa3;
-            --text-inverse: #ffffff;
-
-            --border: #e4e9f0;
-            --border-light: #f0f3f8;
-            --divider: #eef2f7;
-
-            --hover: #f5f9ff;
-            --disabled: #eef2f7;
-
-            --badge-pass-bg: #e6f7ef;
-            --badge-pass-text: #0f8a5e;
-            --badge-pass-border: #b8e6d4;
-            --badge-fail-bg: #fdeeec;
-            --badge-fail-text: #d43a3a;
-            --badge-fail-border: #f5c8c4;
-
-            --table-stripe: #fafcff;
-            --table-border: #eef2f7;
-
-            --input-bg: #ffffff;
-            --input-border: #dce2ea;
-            --input-focus: #0f3b5e;
-
-            --header-bg: #ffffff;
-            --header-border: #e9eef4;
-            --header-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 20, 40, 0.04);
-
-            --footer-bg: #f8faff;
-            --footer-border: #e9eef4;
-
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02);
-            --shadow-md: 0 4px 12px rgba(0, 20, 40, 0.06);
-            --shadow-lg: 0 8px 32px rgba(0, 20, 40, 0.08);
-
-            --toggle-bg: #dce2ea;
-            --toggle-dot: #ffffff;
-        }
-
-        /* ── Dark Theme ───────────────────────────────────── */
-        [data-theme="dark"] {
-            --bg: #0a121e;
-            --surface: #111d2d;
-            --surface-alt: #0f1a28;
-            --card: #152233;
-            --card-border: #1e3044;
-            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
-
-            --primary: #6d9fc8;
-            --primary-light: #1a2f44;
-            --primary-dark: #8bb8df;
-            --accent: #e87a4a;
-            --accent-light: #2d1a10;
-            --accent-dark: #f0946a;
-            --success: #3ebd8a;
-            --success-light: #0f2a1e;
-            --danger: #e86060;
-            --danger-light: #2d1412;
-            --warning: #e8b830;
-            --gold: #e8b830;
-
-            --text: #e8edf2;
-            --text-secondary: #a0b8cc;
-            --text-muted: #6a8498;
-            --text-inverse: #0b1a2a;
-
-            --border: #1e3044;
-            --border-light: #17283a;
-            --divider: #1a2a3e;
-
-            --hover: #1a2a3e;
-            --disabled: #1a2a3e;
-
-            --badge-pass-bg: #0f2a1e;
-            --badge-pass-text: #3ebd8a;
-            --badge-pass-border: #1a4a34;
-            --badge-fail-bg: #2d1412;
-            --badge-fail-text: #e86060;
-            --badge-fail-border: #4a2220;
-
-            --table-stripe: #0f1a28;
-            --table-border: #1e3044;
-
-            --input-bg: #0f1a28;
-            --input-border: #1e3044;
-            --input-focus: #6d9fc8;
-
-            --header-bg: #111d2d;
-            --header-border: #1e3044;
-            --header-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.4);
-
-            --footer-bg: #0f1a28;
-            --footer-border: #1e3044;
-
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-
-            --toggle-bg: #1e3044;
-            --toggle-dot: #a0b8cc;
-        }
-
-        /* ── Reset ────────────────────────────────────────── */
-        html {
-            font-family: var(--font);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        body {
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            transition: background var(--transition), color var(--transition);
-            line-height: 1.6;
-        }
-
-        /* ── Scrollbar ────────────────────────────────────── */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-muted);
-        }
-
-        /* ── Header ───────────────────────────────────────── */
-        .header {
-            background: var(--header-bg);
-            border-bottom: 1px solid var(--header-border);
-            box-shadow: var(--header-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-        }
-
-        .header-inner {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 0;
-        }
-
-        .header-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: var(--primary);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            flex-shrink: 0;
-            transition: background var(--transition);
-        }
-        .logo {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header-title {
-            min-width: 0;
-        }
-
-        .header-title h1 {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-            color: var(--text);
-            line-height: 1.2;
-            transition: color var(--transition);
-        }
-
-        .header-title .sub {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
-            letter-spacing: 0.2px;
-            margin-top: 1px;
-            transition: color var(--transition);
-        }
-
-        .header-title .sub span {
-            color: var(--text-secondary);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .header-badge {
-            background: var(--primary-light);
-            color: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            padding: 4px 14px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            transition: background var(--transition), color var(--transition), border-color var(--transition);
-        }
-
-        /* ── Theme Toggle ──────────────────────────────────── */
-        .toggle-wrap {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .toggle-wrap .icon {
-            font-size: 12px;
-            line-height: 1;
-            opacity: 0.6;
-            transition: opacity var(--transition);
-        }
-
-        .toggle-wrap .icon.active {
-            opacity: 1;
-        }
-
-        .toggle {
-            position: relative;
-            width: 40px;
-            height: 22px;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        .toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-            position: absolute;
-        }
-
-        .toggle .slider {
-            position: absolute;
-            inset: 0;
-            background: var(--toggle-bg);
-            border-radius: 22px;
-            transition: background var(--transition);
-        }
-
-        .toggle .slider::before {
-            content: '';
-            position: absolute;
-            height: 16px;
-            width: 16px;
-            left: 3px;
-            top: 3px;
-            background: var(--toggle-dot);
-            border-radius: 50%;
-            transition: transform var(--transition), background var(--transition);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-        }
-
-        .toggle input:checked+.slider {
-            background: var(--primary);
-        }
-
-        .toggle input:checked+.slider::before {
-            transform: translateX(18px);
-            background: #ffffff;
-        }
-
-        /* ── Breadcrumb ────────────────────────────────────── */
-        .breadcrumb {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 10px 24px 0;
-            font-size: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-            transition: color var(--transition);
-        }
-
-        .breadcrumb a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition);
-        }
-
-        .breadcrumb a:hover {
-            color: var(--primary);
-        }
-
-        .breadcrumb .sep {
-            opacity: 0.4;
-            font-weight: 300;
-        }
-
-        .breadcrumb .current {
-            color: var(--text);
-            font-weight: 800;
-            transition: color var(--transition);
-        }
-
-        /* ── Main ──────────────────────────────────────────── */
-        main {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 24px 20px 40px;
-        }
-
-        /* ── States ────────────────────────────────────────── */
-        #s-loading,
-        #s-lock,
-        #s-deny,
-        #s-result {
-            display: none;
-        }
-
-        /* ── Card ──────────────────────────────────────────── */
-        .card {
-            background: var(--card);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-        }
-
-        /* ── Loading ───────────────────────────────────────── */
-        .loading-state {
-            padding: 64px 32px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            text-align: center;
-        }
-
-        .loading-state .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .loading-state p {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: color var(--transition);
-        }
-
-        .loading-state .sub {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        /* ── Lock / Deny ───────────────────────────────────── */
-        .info-screen {
-            padding: 56px 32px;
-            text-align: center;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-
-        .info-screen .big-icon {
-            font-size: 56px;
-            margin-bottom: 12px;
-            display: block;
-            line-height: 1;
-        }
-
-        .info-screen h2 {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 8px;
-            letter-spacing: -0.3px;
-            transition: color var(--transition);
-        }
-
-        .info-screen p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            transition: color var(--transition);
-        }
-
-        .info-screen .highlight {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .deny-tag {
-            display: inline-block;
-            margin-top: 18px;
-            background: var(--danger-light);
-            border: 1px solid var(--badge-fail-border);
-            border-radius: var(--radius-sm);
-            padding: 8px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--danger);
-            letter-spacing: 0.2px;
-            font-family: var(--font);
-            transition: background var(--transition), border-color var(--transition), color var(--transition);
-        }
-
-        /* ── Result Header ─────────────────────────────────── */
-        .result-header {
-            padding: 24px 28px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            border-bottom: 2px solid var(--divider);
-            transition: border-color var(--transition);
-        }
-
-        .result-header.pass {
-            border-bottom-color: var(--success);
-            background: var(--success-light);
-            transition: background var(--transition), border-color var(--transition);
-        }
-
-        .result-header.fail {
-            border-bottom-color: var(--danger);
-            background: var(--danger-light);
-            transition: background var(--transition), border-color var(--transition);
-        }
-
-        .result-header .info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .result-header .info .name {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.3px;
-            color: var(--text);
-            transition: color var(--transition);
-        }
-
-        .result-header .info .meta {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 2px;
-            transition: color var(--transition);
-        }
-
-        .result-header .info .meta b {
-            color: var(--text);
-            font-weight: 600;
-            transition: color var(--transition);
-        }
-
-        .result-header .badge-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .result-header .badge {
-            font-size: 12px;
-            font-weight: 800;
-            padding: 5px 18px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            border: 1px solid transparent;
-        }
-
-        .result-header .badge.pass {
-            background: var(--badge-pass-bg);
-            color: var(--badge-pass-text);
-            border-color: var(--badge-pass-border);
-            transition: background var(--transition), color var(--transition), border-color var(--transition);
-        }
-
-        .result-header .badge.fail {
-            background: var(--badge-fail-bg);
-            color: var(--badge-fail-text);
-            border-color: var(--badge-fail-border);
-            transition: background var(--transition), color var(--transition), border-color var(--transition);
-        }
-
-        .result-header .stamp {
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .result-header .stamp .icon {
-            font-size: 28px;
-            line-height: 1;
-        }
-
-        .result-header .stamp .label {
-            font-size: 9px;
-            font-weight: 800;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            color: var(--success);
-            margin-top: 1px;
-            transition: color var(--transition);
-        }
-
-        /* ── Section ───────────────────────────────────────── */
-        .section {
-            padding: 22px 28px;
-            border-bottom: 1px solid var(--divider);
-            transition: border-color var(--transition);
-        }
-
-        .section:last-child {
-            border-bottom: none;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            transition: color var(--transition);
-        }
-
-        .section-title::before {
-            content: '';
-            width: 3px;
-            height: 18px;
-            background: var(--accent);
-            border-radius: 2px;
-            flex-shrink: 0;
-            transition: background var(--transition);
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--divider);
-            transition: background var(--transition);
-        }
-
-        /* ── Info Grid ─────────────────────────────────────── */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px 20px;
-        }
-
-        .info-item label {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 2px;
-            transition: color var(--transition);
-        }
-
-        .info-item span {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text);
-            transition: color var(--transition);
-        }
-
-        /* ── Marks Table ───────────────────────────────────── */
-        .table-wrap {
-            overflow-x: auto;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--table-border);
-            transition: border-color var(--transition);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-            min-width: 620px;
-        }
-
-        thead {
-            background: var(--table-stripe);
-            transition: background var(--transition);
-        }
-
-        th {
-            padding: 10px 12px;
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            border-bottom: 1px solid var(--table-border);
-            text-align: center;
-            white-space: nowrap;
-            transition: color var(--transition), border-color var(--transition), background var(--transition);
-        }
-
-        th:first-child {
-            text-align: left;
-            padding-left: 16px;
-        }
-
-        td {
-            padding: 12px 12px;
-            border-bottom: 1px solid var(--table-border);
-            text-align: center;
-            vertical-align: middle;
-            color: var(--text-secondary);
-            transition: color var(--transition), border-color var(--transition);
-        }
-
-        td:first-child {
-            text-align: left;
-            padding-left: 16px;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background: var(--hover);
-            transition: background var(--transition);
-        }
-
-        .paper-name {
-            font-weight: 700;
-            font-size: 14px;
-            color: var(--text);
-            transition: color var(--transition);
-        }
-
-        .paper-sub {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 1px;
-            transition: color var(--transition);
-        }
-
-        .marks-num {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--text);
-            transition: color var(--transition);
-        }
-
-        .marks-sub {
-            font-size: 10px;
-            color: var(--text-muted);
-            margin-top: 1px;
-            transition: color var(--transition);
-        }
-
-        .marks-total {
-            color: var(--primary) !important;
-            transition: color var(--transition);
-        }
-
-        .grade-chip {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            background: var(--primary-light);
-            color: var(--primary);
-            transition: background var(--transition), color var(--transition);
-        }
-
-        .status-pass {
-            color: var(--success);
-            font-weight: 700;
-            font-size: 12px;
-            transition: color var(--transition);
-        }
-
-        .status-fail {
-            color: var(--danger);
-            font-weight: 700;
-            font-size: 12px;
-            transition: color var(--transition);
-        }
-
-        .dash {
-            color: var(--text-muted);
-            font-weight: 400;
-            transition: color var(--transition);
-        }
-
-        /* ── Summary ───────────────────────────────────────── */
-        .summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            padding: 20px 28px;
-            background: var(--surface-alt);
-            border-top: 1px solid var(--divider);
-            transition: background var(--transition), border-color var(--transition);
-        }
-
-        .summary-item {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 16px 14px;
-            text-align: center;
-            transition: background var(--transition), border-color var(--transition);
-        }
-
-        .summary-item .value {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            transition: color var(--transition);
-        }
-
-        .summary-item .label {
-            font-size: 9px;
-            font-weight: 700;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-top: 4px;
-            transition: color var(--transition);
-        }
-
-        .summary-item .value.result-pass {
-            color: var(--success);
-        }
-        .summary-item .value.result-fail {
-            color: var(--danger);
-        }
-
-        /* ── Footer Strip ──────────────────────────────────── */
-        .result-footer {
-            background: var(--surface-alt);
-            border-top: 1px solid var(--divider);
-            padding: 14px 28px;
-            font-size: 12px;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            transition: background var(--transition), border-color var(--transition), color var(--transition);
-        }
-
-        .result-footer .lock {
-            color: var(--primary);
-            font-size: 14px;
-            transition: color var(--transition);
-        }
-
-        .result-footer strong {
-            color: var(--text-secondary);
-            font-weight: 600;
-            transition: color var(--transition);
-        }
-
-        /* ── Page Footer ───────────────────────────────────── */
-        .page-footer {
-            text-align: center;
-            padding: 32px 20px 40px;
-            font-size: 13px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--divider);
-            margin-top: 8px;
-            line-height: 2;
-            transition: color var(--transition), border-color var(--transition);
-        }
-
-        .page-footer .brand {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text);
-            letter-spacing: -0.3px;
-            transition: color var(--transition);
-        }
-
-        .page-footer .brand strong {
-            color: var(--primary);
-            transition: color var(--transition);
-        }
-
-        .page-footer .details {
-            font-size: 12px;
-            color: var(--text-secondary);
-            transition: color var(--transition);
-        }
-
-        .page-footer .warning {
-            margin-top: 14px;
-            font-size: 12px;
-            background: var(--surface-alt);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 10px 20px;
-            display: inline-block;
-            color: var(--text-muted);
-            transition: background var(--transition), border-color var(--transition), color var(--transition);
-        }
-
-        /* ── Responsive ────────────────────────────────────── */
-        @media (max-width: 720px) {
-            .header-inner {
-                padding: 12px 16px;
-            }
-
-            .header-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-                border-radius: 10px;
-            }
-
-            .header-title h1 {
-                font-size: 15px;
-            }
-
-            .header-title .sub {
-                font-size: 11px;
-            }
-
-            .header-badge {
-                display: none;
-            }
-
-            .breadcrumb {
-                padding: 8px 16px 0;
-                font-size: 11px;
-            }
-
-            main {
-                padding: 16px 12px 32px;
-            }
-
-            .result-header {
-                padding: 18px 16px;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-
-            .result-header .info .name {
-                font-size: 17px;
-            }
-
-            .result-header .badge-wrap {
-                align-self: flex-start;
-            }
-
-            .section {
-                padding: 16px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px 16px;
-            }
-
-            .summary {
-                grid-template-columns: 1fr 1fr;
-                padding: 16px;
-                gap: 8px;
-            }
-
-            .summary-item .value {
-                font-size: 20px;
-            }
-
-            .result-footer {
-                padding: 12px 16px;
-                font-size: 11px;
-            }
-
-            .info-screen {
-                padding: 40px 20px;
-            }
-
-            .info-screen h2 {
-                font-size: 19px;
-            }
-
-            .loading-state {
-                padding: 48px 20px;
-            }
-
-            .page-footer {
-                padding: 24px 16px 32px;
-                font-size: 12px;
-            }
-
-            .page-footer .brand {
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .summary {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .result-header .stamp .icon {
-                font-size: 22px;
-            }
-        }
-
-        /* ── Utility ───────────────────────────────────────── */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Result Verification — Marwar Medical University, Jodhpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ── UI Shell tokens ───────────────────────── */
+[data-theme="light"]{
+  --shell-bg:#f0f2f8;--shell-surface:#fff;
+  --shell-border:#e2e5f0;--shell-text:#0d1117;
+  --shell-muted:#5a6380;--shell-accent:#3730a3;
+  --hdr-bg:#1e1b4b;--hdr-txt:#fff;--hdr-sub:#c7d2fe;
+  --hdr-tag:rgba(255,255,255,.15);
+  --shadow:0 4px 24px rgba(55,48,163,.13),0 1px 4px rgba(55,48,163,.08);
+}
+[data-theme="dark"]{
+  --shell-bg:#080b12;--shell-surface:#0f1420;
+  --shell-border:#1e2640;--shell-text:#eef0f8;
+  --shell-muted:#8890b0;--shell-accent:#818cf8;
+  --hdr-bg:#080b12;--hdr-txt:#eef0f8;--hdr-sub:#818cf8;
+  --hdr-tag:rgba(99,102,241,.2);
+  --shadow:0 4px 24px rgba(0,0,0,.5),0 1px 4px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--shell-bg);
+  color:var(--shell-text);min-height:100vh;transition:background .25s,color .25s;
+  -webkit-font-smoothing:antialiased}
+
+/* ── Portal header ─────────────────────────── */
+.portal-hdr{background:var(--hdr-bg);border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.portal-hdr-inner{max-width:1040px;margin:0 auto;padding:0 24px;
+  height:56px;display:flex;align-items:center;gap:14px}
+.phi{width:34px;height:34px;border-radius:8px;
+  background:rgba(99,102,241,.25);border:1px solid rgba(99,102,241,.4);
+  display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.pht{font-size:14px;font-weight:700;color:var(--hdr-txt);flex:1}
+.phs{font-size:11px;color:var(--hdr-sub);margin-top:1px;font-weight:500}
+.phright{margin-left:auto;display:flex;align-items:center;gap:8px}
+.ppill{background:var(--hdr-tag);border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:4px 11px;font-size:11px;
+  color:var(--hdr-sub);font-weight:600;white-space:nowrap}
+.tbtn{width:34px;height:34px;border-radius:8px;background:var(--hdr-tag);
+  border:1px solid rgba(255,255,255,.15);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:15px}
+
+main{max-width:1040px;margin:0 auto;padding:28px 20px 60px}
+
+/* ── States ────────────────────────────────── */
+#s-loading,#s-lock,#s-deny,#s-result{display:none}
+
+.info-card{background:var(--shell-surface);border:1px solid var(--shell-border);
+  border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.info-body{padding:60px 36px;text-align:center;max-width:500px;margin:0 auto}
+.info-icon{width:68px;height:68px;border-radius:18px;
+  background:var(--shell-bg);border:1px solid var(--shell-border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;margin:0 auto 22px}
+.info-title{font-size:21px;font-weight:800;letter-spacing:-.4px;
+  margin-bottom:12px;color:var(--shell-accent)}
+.info-text{font-size:13.5px;color:var(--shell-muted);line-height:1.8}
+.info-text strong{color:var(--shell-text);font-weight:600}
+.deny-code{display:inline-block;margin-top:18px;
+  background:#fff8f0;border:1px solid #fcd34d;
+  border-radius:8px;padding:7px 16px;font-size:12px;
+  font-weight:700;color:#78350f;letter-spacing:.4px}
+[data-theme="dark"] .deny-code{background:#1c1400;border-color:#78350f;color:#fcd34d}
+
+.loader{display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:14px;padding:80px;
+  color:var(--shell-muted);font-size:13px;font-weight:500}
+.ring{width:42px;height:42px;border:3px solid var(--shell-border);
+  border-top-color:var(--shell-accent);border-radius:50%;
+  animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── VERIFIED BANNER ───────────────────────── */
+.verified-banner{
+  display:flex;align-items:center;gap:10px;
+  background:#ecfdf5;border:1px solid #6ee7b7;
+  border-radius:10px;padding:10px 18px;
+  margin-bottom:20px;font-size:12px;
+  font-weight:700;color:#065f46;letter-spacing:.3px}
+[data-theme="dark"] .verified-banner{
+  background:#022c22;border-color:#065f46;color:#34d399}
+.verified-banner .vdot{width:8px;height:8px;border-radius:50%;
+  background:#059669;flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(5,150,105,.25)}
+.verified-banner .vscan{margin-left:auto;font-size:11px;
+  font-weight:500;color:#059669;opacity:.8}
+
+/* print / download bar */
+.action-bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.act-btn{display:flex;align-items:center;gap:7px;
+  padding:9px 16px;border-radius:9px;font-size:12px;
+  font-weight:600;cursor:pointer;border:1px solid var(--shell-border);
+  background:var(--shell-surface);color:var(--shell-text);
+  transition:all .15s;white-space:nowrap}
+.act-btn:hover{background:var(--shell-accent);
+  color:#fff;border-color:var(--shell-accent)}
+.act-btn.primary{background:var(--shell-accent);
+  color:#fff;border-color:var(--shell-accent)}
+.act-btn.primary:hover{opacity:.88}
+
+/* ═══════════════════════════════════════════
+   MARKSHEET — faithful HTML recreation
+   Uses inline styling + class overrides to
+   match the exact PDF layout
+═══════════════════════════════════════════ */
+.ms-wrap{
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:4px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  /* Print-ready: A4 proportions */
+  font-family:Arial,Helvetica,sans-serif;
+  color:#000;
+}
+
+/* — Header — */
+.ms-hdr{
+  display:flex;align-items:center;
+  gap:16px;padding:10px 20px 8px;
+  border-bottom:3px solid #003c78;
+}
+.ms-hdr-logo{
+  width:80px;height:80px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:44px;
+}
+.ms-hdr-title{flex:1;text-align:center}
+.ms-hdr-title h1{
+  font-size:clamp(16px,3vw,26px);
+  font-weight:900;color:#003c78;
+  letter-spacing:1px;text-transform:uppercase;
+  line-height:1.2;font-family:Arial,sans-serif
+}
+.ms-hdr-title h1 span{color:#dc6428}
+
+/* — Blue statement bar — */
+.ms-stmt{
+  background:#003c78;color:#fff;
+  text-align:center;padding:7px 16px;
+  font-size:clamp(11px,2vw,14px);
+  font-weight:700;letter-spacing:.5px;
+}
+
+/* — Faculty / URN row — */
+.ms-meta-row{
+  display:flex;align-items:center;
+  padding:5px 16px;gap:8px;
+  border-bottom:1px solid #003c78;
+  background:#f0f4ff;font-size:12px;
+}
+.ms-meta-box{
+  background:#003c78;color:#fff;
+  padding:3px 10px;border-radius:3px;
+  font-weight:700;font-size:12px;white-space:nowrap
+}
+.ms-urn-boxes{display:flex;gap:1px;margin:0 4px}
+.ms-urn-box{
+  width:28px;height:28px;border:1.5px solid #003c78;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;background:#fff;color:#003c78
+}
+.ms-attempt{margin-left:auto}
+
+/* — Student info block — */
+.ms-student{padding:8px 16px 6px;display:grid;
+  grid-template-columns:1fr 1fr;gap:3px 20px;
+  border-bottom:1px solid #003c78;font-size:12.5px}
+.ms-student-row{display:flex;gap:6px}
+.ms-student-lbl{font-weight:700;white-space:nowrap;color:#003c78;min-width:130px}
+.ms-student-val{font-weight:600}
+
+/* — Marks table — */
+.ms-table-wrap{overflow-x:auto}
+.ms-table{width:100%;border-collapse:collapse;font-size:10.5px}
+.ms-table th,.ms-table td{
+  border:1px solid #003c78;
+  padding:3px 4px;text-align:center;
+  vertical-align:middle;line-height:1.3
+}
+.ms-table th{
+  background:#003c78;color:#fff;font-weight:700;
+  font-size:9.5px;letter-spacing:.2px
+}
+.ms-table th.rotate-th{
+  writing-mode:vertical-lr;
+  transform:rotate(180deg);
+  padding:6px 3px;
+  white-space:nowrap;
+  font-size:9px;
+}
+.ms-table .th-group{background:#1a5a9a;font-size:10px}
+.ms-table .th-sub{background:#2a6aaa;font-size:9px}
+.ms-table td.subject-col{text-align:left;font-weight:600;
+  font-size:10.5px;padding:4px 6px;min-width:160px}
+.ms-table td.marks{font-weight:700;font-size:12px}
+.ms-table td.pass-col{color:#059669;font-weight:800}
+.ms-table td.fail-col{color:#dc2626;font-weight:800}
+.ms-table tr.data-row:nth-child(odd){background:#f7f9ff}
+.ms-table tr.data-row:nth-child(even){background:#fff}
+.ms-table tr.data-row:hover{background:#e8f0ff}
+.ms-table .max-row td{background:#eef2ff;font-size:9.5px;color:#003c78;font-weight:600}
+.ms-table .min-row td{background:#fff8e8;font-size:9.5px;color:#7a4500;font-weight:600}
+
+/* — Result bar — */
+.ms-result-bar{
+  display:flex;align-items:center;
+  border-top:2px solid #003c78;
+  font-size:12px;
+}
+.ms-result-cell{
+  flex:1;padding:6px 14px;font-weight:700;
+  border-right:1px solid #003c78;
+}
+.ms-result-cell:last-child{border-right:none}
+.ms-result-cell.pass-bg{background:#d1fae5;color:#065f46}
+.ms-result-cell.fail-bg{background:#fee2e2;color:#7f1d1d}
+.ms-result-label{font-size:10px;font-weight:500;opacity:.7}
+
+/* — Grade table — */
+.ms-grade-table{width:100%;border-collapse:collapse;
+  font-size:9.5px;margin-top:1px}
+.ms-grade-table th,.ms-grade-table td{
+  border:1px solid #003c78;
+  padding:3px 6px;text-align:center;font-size:9px}
+.ms-grade-table th{background:#003c78;color:#fff;font-weight:700}
+
+/* — Footer — */
+.ms-footer{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;
+  padding:8px 16px 6px;
+  font-size:11px;font-weight:700;color:#003c78;
+  border-top:1px solid #003c78;
+}
+.ms-sig{text-align:right}
+.ms-sig-name{font-weight:800;font-size:12px}
+.ms-sig-title{font-size:10px;color:#555}
+
+/* — Watermark rows — */
+.ms-wm{
+  text-align:center;font-size:8px;
+  color:#003c78;opacity:.12;
+  letter-spacing:2px;font-weight:700;
+  padding:2px 0;overflow:hidden;
+  white-space:nowrap;
+  user-select:none;pointer-events:none;
+}
+
+/* notes */
+.ms-notes{padding:6px 16px;font-size:9px;
+  color:#333;border-top:1px solid #ccc;
+  line-height:1.6}
+.ms-notes p{margin-bottom:2px}
+.ms-notes strong{color:#000}
+
+/* ── Print styles ──────────────────────────── */
+@media print{
+  body{background:#fff!important}
+  .portal-hdr,.verified-banner,.action-bar,.page-footer{display:none!important}
+  main{padding:0!important;max-width:100%!important}
+  .ms-wrap{box-shadow:none!important;border:none!important}
+  #s-result{display:block!important}
+}
+
+.page-footer{margin-top:40px;padding:24px 0;
+  border-top:1px solid var(--shell-border);
+  text-align:center;font-size:11px;color:var(--shell-muted);line-height:2}
+</style>
 </head>
 <body>
 
-    <!-- ═══════ HEADER ═══════ -->
-    <header class="header" role="banner">
-        <div class="header-inner">
-            <div class="header-left">
-  <div class="logo"><img src="src/favicon.ico"></img></div>
-                <div class="header-title">
-                    <h1>Marwar Medical University, Jodhpur</h1>
-                    <div class="sub"> Result Verification Portal</div>
-                </div>
-            </div>
-            <div class="header-right">
-                <span class="header-badge">🔒 Official</span>
-                <div class="toggle-wrap">
-                    <span class="icon" id="sunIcon" aria-hidden="true">☀️</span>
-                    <label class="toggle" title="Toggle theme">
-                        <input type="checkbox" id="themeToggle" onchange="toggleTheme(this)" />
-                        <span class="slider"></span>
-                    </label>
-                    <span class="icon" id="moonIcon" aria-hidden="true">🌙</span>
-                </div>
-            </div>
+<!-- Portal header -->
+<header class="portal-hdr">
+  <div class="portal-hdr-inner">
+    <div class="phi">🏛</div>
+    <div>
+      <div class="pht">Marwar Medical University — Result Verification</div>
+      <div class="phs">B.Sc. Nursing · 1st Semester 2025–26</div>
+    </div>
+    <div class="phright">
+      <div class="ppill">🔒 Official</div>
+      <button class="tbtn" onclick="toggleTheme()" title="Toggle theme" id="tbtn">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Loading -->
+  <div id="s-loading">
+    <div class="loader"><div class="ring"></div>Verifying marksheet…</div>
+  </div>
+
+  <!-- Lock -->
+  <div id="s-lock">
+    <div class="info-card">
+      <div class="info-body">
+        <div class="info-icon">🔐</div>
+        <div class="info-title">Scan Your QR Code</div>
+        <p class="info-text">
+          This portal is accessible <strong>only by scanning the QR code</strong>
+          printed on your official marksheet issued by
+          <strong>Marwar Medical University, Jodhpur.</strong><br><br>
+          Each QR code is cryptographically unique to one student.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Deny -->
+  <div id="s-deny">
+    <div class="info-card">
+      <div class="info-body">
+        <div class="info-icon">🚫</div>
+        <div class="info-title">Access Denied</div>
+        <p class="info-text">
+          This link is <strong>invalid or has been tampered with.</strong>
+          Each QR code is bound to a single student and cannot display any other record.
+        </p>
+        <div class="deny-code" id="deny-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result — full marksheet render -->
+  <div id="s-result">
+
+    <div class="verified-banner">
+      <div class="vdot"></div>
+      ✅ &nbsp;Authentic Record — Cryptographically Verified
+      <span class="vscan">Scanned <span id="r-ts"></span></span>
+    </div>
+
+    <div class="action-bar">
+      <button class="act-btn primary" onclick="window.print()">🖨 Print Marksheet</button>
+      <button class="act-btn" onclick="saveAsPDF()">⬇ Save as PDF</button>
+    </div>
+
+    <!-- ═══ MARKSHEET ═══ -->
+    <div class="ms-wrap" id="marksheet">
+
+      <!-- Header -->
+      <div class="ms-hdr">
+        <div class="ms-hdr-logo">🏛️</div>
+        <div class="ms-hdr-title">
+          <h1><span>MARWAR MEDICAL UNIVERSITY,</span> JODHPUR</h1>
         </div>
-    </header>
+        <div style="width:80px"></div>
+      </div>
 
-    <!-- ═══════ MAIN ═══════ -->
-    <main>
+      <!-- Statement bar -->
+      <div class="ms-stmt">
+        Statement of Marks: B.Sc. Nursing Ist Semester (Main) Examination April - 2026
+      </div>
 
-        <!-- Loading -->
-        <div id="s-loading">
-            <div class="card">
-                <div class="loading-state">
-                    <div class="spinner" aria-hidden="true"></div>
-                    <p>Verifying marksheet…</p>
-                    <div class="sub">Please wait while we validate the record</div>
-                </div>
-            </div>
+      <!-- Faculty / URN row -->
+      <div class="ms-meta-row">
+        <span class="ms-meta-box">Faculty</span>
+        <span id="ms-faculty" style="font-weight:700;font-size:13px;min-width:24px;text-align:center"></span>
+        &nbsp;&nbsp;&nbsp;
+        <span class="ms-meta-box">URN</span>
+        <div class="ms-urn-boxes" id="ms-urn-boxes"></div>
+        <span class="ms-attempt ms-meta-box">Attempt 1</span>
+      </div>
+
+      <!-- Student info -->
+      <div class="ms-student">
+        <div class="ms-student-row">
+          <span class="ms-student-lbl">Name of Student :</span>
+          <span class="ms-student-val" id="ms-name"></span>
         </div>
-
-        <!-- Lock -->
-        <div id="s-lock">
-            <div class="card">
-                <div class="info-screen">
-                    <span class="big-icon" aria-hidden="true">🔐</span>
-                    <h2>Scan Your QR Code to Verify</h2>
-                    <p>
-                        This portal is accessible <span class="highlight">only by scanning the QR code</span>
-                        printed on your official marksheet issued by <br>
-                        <span class="highlight">Marwar Medical University, Jodhpur</span>.
-                    </p>
-                </div>
-            </div>
+        <div class="ms-student-row">
+          <span class="ms-student-lbl">Mother's Name :</span>
+          <span class="ms-student-val" id="ms-mother"></span>
         </div>
-
-        <!-- Deny -->
-        <div id="s-deny">
-            <div class="card">
-                <div class="info-screen">
-                    <span class="big-icon" aria-hidden="true">🚫</span>
-                    <h2>Access Denied</h2>
-                    <p>
-                        This verification link is <span class="highlight">invalid or has been tampered with</span>.
-                    </p>
-                    <div class="deny-tag" id="deny-urn"></div>
-                </div>
-            </div>
+        <div class="ms-student-row">
+          <span class="ms-student-lbl">Father's Name :</span>
+          <span class="ms-student-val" id="ms-father"></span>
         </div>
-
-        <!-- Result -->
-        <div id="s-result">
-            <div class="card">
-
-                <!-- Header -->
-                <div class="result-header" id="rheader">
-                    <div class="info">
-                        <div class="name" id="r-name"></div>
-                        <div class="meta" id="r-meta"></div>
-                    </div>
-                    <div class="badge-wrap">
-                        <span class="badge" id="r-badge"></span>
-                        <div class="stamp">
-                            <div class="icon" aria-hidden="true">✅</div>
-                            <div class="label">Verified</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Student Info -->
-                <div class="section">
-                    <div class="section-title">Student Information</div>
-                    <div class="info-grid">
-                        <div class="info-item"><label>Father's Name</label><span id="r-father"></span></div>
-                        <div class="info-item"><label>Mother's Name</label><span id="r-mother"></span></div>
-                        <div class="info-item"><label>College</label><span id="r-college"></span></div>
-                        <div class="info-item"><label>College Code</label><span id="r-ccode"></span></div>
-                        <div class="info-item"><label>Examination</label><span>B.Sc. Nursing</span></div>
-                        <div class="info-item"><label>Semester</label><span>1st</span></div>
-                        <div class="info-item"><label>Session</label><span>2025-26</span></div>
-                    </div>
-                </div>
-
-                <!-- Marks -->
-                <div class="section">
-                    <div class="section-title">Subject-wise Marks</div>
-                    <div class="table-wrap">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style="text-align:left;min-width:180px">Paper / Subject</th>
-                                    <th>SA<br /><small style="font-weight:400;text-transform:none;">/37</small></th>
-                                    <th>SB<br /><small style="font-weight:400;text-transform:none;">/38</small></th>
-                                    <th>Theory</th>
-                                    <th>IA / PI</th>
-                                    <th>Total</th>
-                                    <th>Grade</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="mbody"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Summary -->
-                <div class="summary">
-                    <div class="summary-item"><div class="value" id="s-tot"></div><div class="label">Grand Total</div></div>
-                    <div class="summary-item"><div class="value" id="s-pct"></div><div class="label">Percentage</div></div>
-                    <div class="summary-item"><div class="value" id="s-grd"></div><div class="label">Grade</div></div>
-                    <div class="summary-item"><div class="value" id="s-res"></div><div class="label">Result</div></div>
-                </div>
-
-                <!-- Footer strip -->
-                <div class="result-footer">
-                    <span class="lock" aria-hidden="true">🔒</span>
-                    Verified Official Record &nbsp;·&nbsp; Verified on <span id="r-ts"></span>
-                </div>
-
-            </div><!-- /card -->
-        </div><!-- /s-result -->
-
-    </main>
-
-    <!-- ═══════ PAGE FOOTER ═══════ -->
-    <footer class="page-footer">
-        <div class="details"><h3>Controller of Examinations &nbsp;·&nbsp; Examination Cell &nbsp;·&nbsp; Marwar Medical University, Jodhpur</h3><br />
+        <div class="ms-student-row">
+          <span class="ms-student-lbl">College Code :</span>
+          <span class="ms-student-val" id="ms-ccode"></span>
         </div>
-        <div class="warning">
-            ⚠️ This portal is for official result verification only.<br />
-            Misrepresentation or tampering of results is a punishable offence under university regulations.
+        <div class="ms-student-row" style="grid-column:1/-1">
+          <span class="ms-student-lbl">Name of College :</span>
+          <span class="ms-student-val" id="ms-college"></span>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        /* ── Theme ─────────────────────────────────────────── */
-        function toggleTheme(cb) {
-            const t = cb.checked ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', t);
-            localStorage.setItem('mmu-theme', t);
-            updateThemeIcons(t);
-        }
+      <!-- Marks table -->
+      <div class="ms-table-wrap">
+        <table class="ms-table">
+          <thead>
+            <tr>
+              <th rowspan="3" style="min-width:160px;text-align:left;padding:4px 6px">Subject / Paper Code</th>
+              <th colspan="9" class="th-group">Maximum Marks</th>
+              <th colspan="4" class="th-group">Min Marks to Pass</th>
+              <th colspan="12" class="th-group">Marks Obtained</th>
+              <th rowspan="3" class="rotate-th">Percentage (%)</th>
+              <th rowspan="3" class="rotate-th">Grade Point</th>
+              <th rowspan="3" class="rotate-th">Letter Grade</th>
+              <th rowspan="3">Status</th>
+            </tr>
+            <tr>
+              <th colspan="5" class="th-sub">Theory</th>
+              <th colspan="3" class="th-sub">Practical</th>
+              <th rowspan="2" class="rotate-th">Sub Total</th>
+              <th colspan="2" class="th-sub">Theory</th>
+              <th rowspan="2" class="th-sub">Practical</th>
+              <th rowspan="2" class="th-sub">Total</th>
+              <th colspan="5" class="th-sub">Theory</th>
+              <th colspan="3" class="th-sub">Practical</th>
+              <th rowspan="2" class="rotate-th">Sub Total</th>
+              <th rowspan="2" class="rotate-th">Practical</th>
+              <th rowspan="2" class="rotate-th">Internal</th>
+              <th rowspan="2" class="rotate-th">Total</th>
+            </tr>
+            <tr>
+              <th class="rotate-th">Sec-A</th>
+              <th class="rotate-th">Sec-B</th>
+              <th class="rotate-th">Section Total</th>
+              <th class="rotate-th">Internal</th>
+              <th class="rotate-th">Total</th>
+              <th class="rotate-th">Practical</th>
+              <th class="rotate-th">Internal</th>
+              <th class="rotate-th">Total</th>
+              <th class="rotate-th">Theory External</th>
+              <th class="rotate-th">Internal</th>
+              <th class="rotate-th">Sec-A</th>
+              <th class="rotate-th">Sec-B</th>
+              <th class="rotate-th">Section Total</th>
+              <th class="rotate-th">Internal</th>
+              <th class="rotate-th">Total</th>
+              <th class="rotate-th">Practical</th>
+              <th class="rotate-th">Internal</th>
+              <th class="rotate-th">Total</th>
+            </tr>
+          </thead>
+          <tbody id="ms-tbody"></tbody>
+        </table>
+      </div>
 
-        function updateThemeIcons(theme) {
-            const sun = document.getElementById('sunIcon');
-            const moon = document.getElementById('moonIcon');
-            if (theme === 'dark') {
-                sun.classList.remove('active');
-                moon.classList.add('active');
-            } else {
-                sun.classList.add('active');
-                moon.classList.remove('active');
-            }
-        }
+      <!-- Watermark rows -->
+      <div class="ms-wm" id="ms-wm1"></div>
+      <div class="ms-wm" id="ms-wm2"></div>
 
-        (function() {
-            let s = localStorage.getItem('mmu-theme');
-            if (!s && window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) s = 'dark';
-            if (s === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                document.getElementById('themeToggle').checked = true;
-                updateThemeIcons('dark');
-            } else {
-                updateThemeIcons('light');
-            }
-        })();
+      <!-- Result bar -->
+      <div class="ms-result-bar" id="ms-result-bar">
+        <div class="ms-result-cell" id="ms-result-cell">
+          <div class="ms-result-label">RESULT</div>
+          <div id="ms-result-val" style="font-size:14px"></div>
+        </div>
+        <div class="ms-result-cell" style="flex:2">
+          <div class="ms-result-label">GRAND TOTAL</div>
+          <div id="ms-grand-total" style="font-size:14px"></div>
+        </div>
+        <div class="ms-result-cell">
+          <div class="ms-result-label">PERCENTAGE (%)</div>
+          <div id="ms-pct-val" style="font-size:14px"></div>
+        </div>
+        <div class="ms-result-cell">
+          <div class="ms-result-label">GRADE</div>
+          <div id="ms-grade-val" style="font-size:14px"></div>
+        </div>
+      </div>
 
-        /* ── Papers ────────────────────────────────────────── */
-        var PAPERS = [
-            { key: 'p1', label: 'Paper I', name: '61101 - Applied Anatomy & Applied Physiology', max: 100, hasSA: true, saMax: [37, 38] },
-            { key: 'p2', label: 'Paper II', name: '61102 - Applied Sociology & Applied Psychology', max: 100, hasSA: true, saMax: [37, 38] },
-            { key: 'p3', label: 'Paper III', name: '61103 - Communicative English**', max: 50, hasSA: true, saMax: [25, 25] },
-            { key: 'p4', label: 'Paper IV', name: '61104 - Nursing Foundation - I', max: 25, hasSA: false },
-        ];
+      <!-- Notes -->
+      <div class="ms-notes">
+        <p><strong>*** - Pass by Grace, ** - Non University Examination, P - Pass, F - Fail, Abs - Absent</strong></p>
+        <p>1. To pass the subject, a student is required to obtain at least 50% marks In Theory Internal, Theory External, Practical Internal and Practical External separately in the University level exams and 40% marks in English and Elective Subjects.</p>
+        <p>2. Where applicable, a student may apply for re-evaluation/scrutiny of his/her answer book(s) in accordance with the rules.</p>
+        <p>3. The Subject 61103 - Communicative English is a Compulsory Subject. As per scheme marks and grades are not included in total Marks.</p>
+        <p>4. The Marks of 61104 - Nursing Foundation - I are shown here but not included in I Semester. These marks will be included in the internal marks of Nursing Foundation - II as per rule.</p>
+        <p>5. In case or any mistake being detected during the preparation of the marksheet and/or brought to notice after wards, the University is empowered to correct the same as per rules.</p>
+      </div>
 
-        /* ── States ────────────────────────────────────────── */
-        function show(id) {
-            ['s-loading', 's-lock', 's-deny', 's-result'].forEach(function(s) {
-                document.getElementById(s).style.display = (s === id) ? 'block' : 'none';
-            });
-        }
+      <!-- Grade legend table -->
+      <div style="padding:6px 16px">
+        <table class="ms-grade-table">
+          <thead>
+            <tr>
+              <th>Letter Grade</th><th>O</th><th>A+</th><th>A</th>
+              <th>B+</th><th>B</th><th>C</th><th>P</th><th>F</th><th>Abs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-weight:700">Grade Point</td>
+              <td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td>—</td><td>0</td><td>0</td></tr>
+            <tr><td style="font-weight:700">Performance</td>
+              <td>Outstanding</td><td>Excellent</td><td>Very Good</td>
+              <td>Good</td><td>Above Average</td><td>Average</td><td>Pass</td><td>Fail</td><td>Fail</td></tr>
+            <tr><td style="font-weight:700">% of Marks</td>
+              <td>85–100</td><td>80–84.99</td><td>75–79.99</td>
+              <td>65–74.99</td><td>60–64.99</td><td>50–59.99</td><td>≥50%</td><td>&lt;50%</td><td>ABSENT</td></tr>
+          </tbody>
+        </table>
+      </div>
 
-        /* ── Boot ──────────────────────────────────────────── */
-        var params = new URLSearchParams(window.location.search);
-        var URN = (params.get('urn') || '').trim();
-        var TOKEN = (params.get('t') || '').trim();
+      <!-- Footer -->
+      <div class="ms-footer">
+        <div>
+          <div><strong>PLACE : JODHPUR</strong></div>
+          <div><strong>DATED : 29/05/2026</strong></div>
+        </div>
+        <div class="ms-sig">
+          <div class="ms-sig-name">(Dr. JAIRAM RAWTANI)</div>
+          <div class="ms-sig-title">CONTROLLER OF EXAMINATIONS</div>
+        </div>
+      </div>
 
-        if (!URN || !TOKEN) {
-            show('s-lock');
-        } else {
-            show('s-loading');
-            fetch('students.json')
-                .then(function(r) { return r.json(); })
-                .then(function(db) {
-                    var s = db[URN];
-                    if (!s) {
-                        document.getElementById('deny-urn').textContent = 'URN: ' + URN + ' — record not found';
-                        show('s-deny');
-                        return;
-                    }
-                    if (s.token !== TOKEN) {
-                        document.getElementById('deny-urn').textContent = 'URN: ' + URN + ' — invalid token';
-                        show('s-deny');
-                        return;
-                    }
-                    render(s);
-                })
-                .catch(function() {
-                    document.getElementById('deny-urn').textContent = 'Unable to load verification data. Please try again.';
-                    show('s-deny');
-                });
-        }
+    </div><!-- /ms-wrap -->
+  </div><!-- /s-result -->
 
-        /* ── Render ────────────────────────────────────────── */
-        function nd(v) { return (v && v.trim() !== '') ? v : '—'; }
+</main>
 
-        function render(s) {
-            var pass = s.result === 'PASS';
+<div class="page-footer">
+  Marwar Medical University, Jodhpur &nbsp;·&nbsp;
+  B.Sc. Nursing 1st Semester 2025–26 &nbsp;·&nbsp;
+  Official Verification Portal<br>
+  ⚠️ For official result verification only. Misrepresentation is a punishable offence.
+</div>
 
-            var rh = document.getElementById('rheader');
-            rh.className = 'result-header ' + (pass ? 'pass' : 'fail');
-            document.getElementById('r-name').textContent = nd(s.name);
-            document.getElementById('r-meta').innerHTML =
-                'URN: <b>' + s.urn + '</b> &nbsp;|&nbsp; Code: <b>' + s.Code +
-                '</b> &nbsp;|&nbsp; ' + nd(s.college);
+<script>
+/* ── Theme ─────────────────────────────── */
+var DARK=false;
+function applyTheme(d){
+  DARK=d;
+  document.documentElement.setAttribute('data-theme',d?'dark':'light');
+  document.getElementById('tbtn').textContent=d?'☀️':'🌙';
+  localStorage.setItem('mmu-theme',d?'dark':'light');
+}
+function toggleTheme(){applyTheme(!DARK);}
+(function(){
+  var s=localStorage.getItem('mmu-theme');
+  if(!s&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)s='dark';
+  applyTheme(s==='dark');
+})();
 
-            var b = document.getElementById('r-badge');
-            b.textContent = s.result;
-            b.className = 'badge ' + (pass ? 'pass' : 'fail');
+/* ── Save as PDF helper ─────────────────── */
+function saveAsPDF(){
+  var orig=document.title;
+  document.title='Marksheet_'+currentURN;
+  window.print();
+  document.title=orig;
+}
+var currentURN='';
 
-            document.getElementById('r-father').textContent = nd(s.father);
-            document.getElementById('r-mother').textContent = nd(s.mother);
-            document.getElementById('r-college').textContent = nd(s.college);
-            document.getElementById('r-ccode').textContent = nd(s.college_code);
+/* ── State ──────────────────────────────── */
+function show(id){
+  ['s-loading','s-lock','s-deny','s-result'].forEach(function(s){
+    document.getElementById(s).style.display=(s===id)?'block':'none';
+  });
+}
 
-            /* Marks rows */
-            var tb = document.getElementById('mbody');
-            tb.innerHTML = '';
-            PAPERS.forEach(function(p) {
-                var d = s[p.key] || {};
-                var pst = d.status === 'PASS';
-                var tr = document.createElement('tr');
-                var saC, iaC;
+/* ── Boot ───────────────────────────────── */
+var params=new URLSearchParams(window.location.search);
+var URN  =(params.get('urn')||'').trim();
+var TOKEN=(params.get('t') ||'').trim();
 
-                if (p.hasSA) {
-                    var m = p.saMax || [37, 38];
-                    saC = '<td><div class="marks-num">' + nd(d.sa) + '</div><div class="marks-sub">/' + m[0] +
-                        '</div></td>' +
-                        '<td><div class="marks-num">' + nd(d.sb) + '</div><div class="marks-sub">/' + m[1] +
-                        '</div></td>';
-                    iaC = '<td><div class="marks-num">' + nd(d.ia) + '</div><div class="marks-sub">IA /25</div></td>';
-                } else {
-                    saC = '<td class="dash">—</td><td class="dash">—</td>';
-                    iaC = '<td><div class="marks-num">' + nd(d.ia) + ' / ' + nd(d.pi) + '</div>' +
-                        '<div class="marks-sub">IA + PI /25</div></td>';
-                }
+if(!URN||!TOKEN){show('s-lock');}
+else{
+  show('s-loading');
+  fetch('students.json')
+    .then(function(r){return r.json();})
+    .then(function(db){
+      var s=db[URN];
+      if(!s){document.getElementById('deny-msg').textContent='URN '+URN+' — record not found';show('s-deny');return;}
+      if(s.token!==TOKEN){document.getElementById('deny-msg').textContent='URN '+URN+' — invalid token';show('s-deny');return;}
+      currentURN=URN;
+      render(s);
+    })
+    .catch(function(){
+      document.getElementById('deny-msg').textContent='Could not load data — please try again';
+      show('s-deny');
+    });
+}
 
-                var thMax = p.key === 'p3' ? '/25' : (p.key === 'p4' ? '' : '/75');
-                var thCell = p.key !== 'p4' ?
-                    '<td><div class="marks-num">' + nd(d.theory) + '</div><div class="marks-sub">' + thMax +
-                    '</div></td>' :
-                    '<td class="dash">—</td>';
+/* ── Helpers ────────────────────────────── */
+function v(x){return(x&&x.trim()!=='')?x.trim():'—';}
+function vn(x){return(x&&x.trim()!=='')?x.trim():'';}
 
-                tr.innerHTML =
-                    '<td><div class="paper-name">' + p.label + ' — ' + p.name + '</div>' +
-                    '<div class="paper-sub">Max Marks: ' + p.max +
-                    ' &nbsp;|&nbsp; Grade Point: ' + nd(d.gp) +
-                    ' &nbsp;|&nbsp; Percentage: ' + nd(d.pct) + '%</div></td>' +
-                    saC + thCell + iaC +
-                    '<td><div class="marks-num marks-total">' + nd(d.total) + '</div><div class="marks-sub">/' + p
-                    .max + '</div></td>' +
-                    '<td><span class="grade-chip">' + nd(d.grade) + '</span></td>' +
-                    '<td><span class="' + (pst ? 'status-pass' : 'status-fail') + '">' + (pst ? '✓ PASS' : '✗ FAIL') +
-                    '</span></td>';
-                tb.appendChild(tr);
-            });
+function wm(text){
+  var s='';for(var i=0;i<8;i++) s+=text+'  ';return s;
+}
 
-            /* Summary */
-            document.getElementById('s-tot').textContent = nd(s.grand_total);
-            document.getElementById('s-pct').textContent = nd(s.percent) + '%';
-            document.getElementById('s-grd').textContent = nd(s.grade);
-            var sr = document.getElementById('s-res');
-            sr.textContent = nd(s.result);
-            sr.className = 'value ' + (pass ? 'result-pass' : 'result-fail');
+/* ── Render marksheet ───────────────────── */
+function render(s){
+  /* Timestamp */
+  document.getElementById('r-ts').textContent=
+    new Date().toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
 
-            document.getElementById('r-ts').textContent =
-                new Date().toLocaleString('en-IN', { dateStyle: 'long', timeStyle: 'short' });
+  /* Faculty + URN digit boxes */
+  document.getElementById('ms-faculty').textContent=v(s.faculty);
+  var urnEl=document.getElementById('ms-urn-boxes');
+  urnEl.innerHTML='';
+  (s.urn||'').split('').forEach(function(ch){
+    var b=document.createElement('div');
+    b.className='ms-urn-box';b.textContent=ch;urnEl.appendChild(b);
+  });
 
-            show('s-result');
-        }
-    </script>
+  /* Student info */
+  document.getElementById('ms-name').textContent=v(s.name);
+  document.getElementById('ms-father').textContent=v(s.father);
+  document.getElementById('ms-mother').textContent=v(s.mother);
+  document.getElementById('ms-college').textContent=v(s.college);
+  document.getElementById('ms-ccode').textContent=v(s.college_code);
+
+  /* Watermark */
+  var wmTxt='MMUJODHPUR';
+  document.getElementById('ms-wm1').textContent=wm(wmTxt);
+  document.getElementById('ms-wm2').textContent=wm(wmTxt);
+
+  /* Papers */
+  var PAPERS=[
+    {code:'61101',name:'Applied Anatomy & Applied Physiology',
+     maxSA:37,maxSB:38,maxSec:75,maxIA:25,maxTh:100,
+     maxPrIA:'',maxPrPI:'',maxPr:'',subTotal:100,
+     minThExt:37.5,minIA:12.5,minPr:'',minTotal:50,
+     hasPr:false,key:'p1'},
+    {code:'61102',name:'Applied Sociology & Applied Psychology',
+     maxSA:37,maxSB:38,maxSec:75,maxIA:25,maxTh:100,
+     maxPrIA:'',maxPrPI:'',maxPr:'',subTotal:100,
+     minThExt:37.5,minIA:12.5,minPr:'',minTotal:50,
+     hasPr:false,key:'p2'},
+    {code:'61103',name:'Communicative English**',
+     maxSA:25,maxSB:'',maxSec:25,maxIA:25,maxTh:50,
+     maxPrIA:'',maxPrPPI:'',maxPr:'',subTotal:50,
+     minThExt:10,minIA:10,minPr:'',minTotal:20,
+     hasPr:false,key:'p3',note:'**'},
+    {code:'61104',name:'Nursing Foundation - I',
+     maxSA:'',maxSB:'',maxSec:'',maxIA:25,maxTh:25,
+     maxPrIA:25,maxPrPI:25,maxPr:25,subTotal:50,
+     minThExt:'',minIA:12.5,minPr:12.5,minTotal:12.5,
+     hasPr:true,key:'p4'},
+  ];
+
+  var tb=document.getElementById('ms-tbody');
+  tb.innerHTML='';
+
+  PAPERS.forEach(function(p){
+    var d=s[p.key]||{};
+    var ok=d.status==='PASS';
+    var tr=document.createElement('tr');
+    tr.className='data-row';
+
+    function cell(val,cls){
+      return '<td class="'+(cls||'')+'">'+(val!==undefined&&val!==''?val:'')+'</td>';
+    }
+    function mcell(val){
+      return '<td class="marks">'+(vn(val)||'')+'</td>';
+    }
+
+    /* Theory obtained cells */
+    var thSA=vn(d.sa),thSB=vn(d.sb);
+    var thSec=thSA&&thSB?(parseInt(thSA)+(thSB?parseInt(thSB):0)):'';
+    if(p.key==='p3'){thSB='';thSec=thSA;}
+    if(p.key==='p4'){thSA='';thSB='';thSec='';}
+
+    var thTot=vn(d.theory);
+    var prIA=p.hasPr?vn(d.ia):'';
+    var prPI=p.hasPr?vn(d.pi):'';
+    var prTot=p.hasPr?vn(d.total):'';
+    var subTot=!p.hasPr?vn(d.total):'';
+
+    tr.innerHTML=
+      '<td class="subject-col">'+p.code+' - '+p.name+'</td>'+
+      /* Max marks */
+      cell(p.maxSA)+cell(p.maxSB)+cell(p.maxSec)+cell(p.maxIA)+cell(p.maxTh)+
+      cell(p.hasPr?p.maxPrIA:'')+cell(p.hasPr?p.maxPrPI:'')+cell(p.hasPr?p.maxPr:'')+
+      cell(p.subTotal)+
+      /* Min marks */
+      cell(p.minThExt)+cell(p.minIA)+cell(p.hasPr?p.minPr:'')+cell(p.minTotal)+
+      /* Marks obtained — theory */
+      mcell(thSA)+mcell(thSB)+mcell(thSec&&thSec!==''?thSec:'')+mcell(vn(d.ia))+mcell(thTot)+
+      /* Practical obtained */
+      mcell(p.hasPr?prIA:'')+mcell(p.hasPr?prPI:'')+mcell(p.hasPr?prTot:'')+
+      /* Sub total */
+      cell(vn(d.total),'marks')+
+      /* Practical sub cols (for non-practical papers leave blank) */
+      cell(p.hasPr?prIA:'','marks')+cell(p.hasPr?prPI:'','marks')+cell(vn(d.total),'marks')+
+      /* Pct / GP / Grade / Status */
+      cell(vn(d.pct))+cell(vn(d.gp))+cell(vn(d.grade))+
+      '<td class="'+(ok?'pass-col':'fail-col')+'" style="font-weight:800">'+
+        (ok?'PASS':'FAIL')+'</td>';
+
+    tb.appendChild(tr);
+  });
+
+  /* Result bar */
+  var pass=s.result==='PASS';
+  document.getElementById('ms-result-cell').className=
+    'ms-result-cell '+(pass?'pass-bg':'fail-bg');
+  document.getElementById('ms-result-val').textContent=v(s.result);
+  document.getElementById('ms-grand-total').textContent=v(s.grand_total)+'/200';
+  document.getElementById('ms-pct-val').textContent=v(s.percent);
+  document.getElementById('ms-grade-val').textContent=v(s.grade);
+
+  show('s-result');
+}
+</script>
 </body>
 </html>
